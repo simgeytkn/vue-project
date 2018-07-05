@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="hello">
+    <h1>
+      {{msg}}
+    </h1>
+  </div>
+
+  <div id="form">
+    <form>
+      <label for="your_username">
+        Your username
+      </label>
+      <input type="text" placeholder="Your Username" v-model="your_username">
+      <label for="search">
+        The User You Want To Call
+      </label>
+      <input type="text" placeholder="User to Be Searched For" v-model="search">
+
+      <a href="#" @click="buttonClick">Search Result
+      </a>
+
+      <hr>
+      <br>
+      <br>
+
+
+      <span>
+        <strong>
+          {{title}}
+        </strong>
+        {{info}}
+      </span>
+
+      <!--INFOS-->
+       <ul style="list-style-type: none">
+         <li>
+           <p v-show="image">
+              <img style="width: 10em; height: 10em" :src="picture" alt="">
+           </p>
+
+          <!--Photo will be here-->
+        </li>
+         <li>
+           {{isim}}
+         </li>
+         <li>
+           {{blog}}
+         </li>
+         <li>
+           {{company}}
+         </li>
+         <li>
+           {{location}}
+         </li>
+
+         <li>
+          <p v-show="tick" >
+            <strong>
+              Following you
+            </strong>
+            <br>
+            <img style="width: 3em; height: 3em" src="data:image/png;base64,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" alt="">
+          </p>
+         </li>
+
+       </ul>
+
+       <!--Repos & Following & Followers Stars-->
+       <ul style="list-style-type: none">
+         <strong>
+           {{repo}}
+           {{repo_number}}
+         </strong>
+
+         <li v-for="depo in depos">
+          {{depo}}
+         </li>
+          <br>
+
+          <strong>{{following}}</strong>
+          <li v-for="following in followings">
+            <router-link :to="{ name: 'Info', params: { username: following } }">
+              {{following}}
+            </router-link>
+          </li>
+          <br>
+
+          <strong>{{follower}}</strong>
+          <li v-for="follower in followers">
+            <router-link :to="{ name: 'Info', params: { username: follower} }">
+              {{follower}}
+            </router-link>
+          </li>
+
+          <br>
+
+          <strong>{{star_number}}</strong>
+          <li v-for="star in stars">
+            {{star}}
+          </li>
+
+       </ul>
+      </ul>
+
+    </form>
+  </div>
+</body>
+
+</html>
